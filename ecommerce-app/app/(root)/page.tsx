@@ -11,6 +11,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { z } from "zod";
 
 const formSchema = z.object({
@@ -27,7 +28,6 @@ export default function Home() {
     },
   })
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // console.log(values)
     setLoading(true);
     console.log(JSON.stringify(values));
     
@@ -42,15 +42,13 @@ export default function Home() {
         throw new Error(`Network response was not ok: ${errorMessage}`);
       }
 
-      alert("Store created successfully");
+      toast.success("Store created successfully");
 
       const data = await response.json();
       console.log(data);
-      // Handle successful response
-      // router.push('/success-page'); // Redirect to a success page or handle success
     } catch (error) {
       console.error(error);
-      // Handle error
+      toast.error("Error creating store");
     } finally {
       setLoading(false);
     }
