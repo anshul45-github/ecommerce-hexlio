@@ -5,6 +5,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { log } from "console";
 import { User } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -25,8 +26,35 @@ export default function Home() {
       name: "",
     },
   })
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // console.log(values)
+    setLoading(true);
+    console.log(JSON.stringify(values));
+    
+    try {
+      const response = await fetch('/api/store', {
+        method: 'POST',
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(`Network response was not ok: ${errorMessage}`);
+      }
+
+      alert("Store created successfully");
+
+      const data = await response.json();
+      console.log(data);
+      // Handle successful response
+      // router.push('/success-page'); // Redirect to a success page or handle success
+    } catch (error) {
+      console.error(error);
+      // Handle error
+    } finally {
+      setLoading(false);
+    }
+
   }
   return (
     <div className="font-[family-name:var(--font-geist-sans)] p-4">
@@ -42,14 +70,14 @@ export default function Home() {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="E-commerce" {...field} />
+                    <Input disabled={loading} placeholder="E-commerce" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button variant={"outline"} className="mr-2">Cancel</Button>
-            <Button type="submit">Continue</Button>
+            <Button disabled={loading} variant={"outline"} className="mr-2">Cancel</Button>
+            <Button disabled={loading} type="submit">Continue</Button>
           </form>
         </Form>
         </Modal>
