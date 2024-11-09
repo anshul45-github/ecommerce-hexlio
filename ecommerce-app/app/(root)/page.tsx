@@ -1,4 +1,5 @@
 "use client"
+import { Modal } from "@/components/modal";
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { User } from "lucide-react";
@@ -15,6 +16,9 @@ export default function Home() {
     <div className="font-[family-name:var(--font-geist-sans)] p-4">
       <SignedIn>
         <UserButton afterSwitchSessionUrl="/" />
+        <Modal onClose={() => {}} open={true} title={"Create store"} description={"Add a new store to manage products and stores"}>
+          children
+        </Modal>
       </SignedIn>
       <SignedOut>
         <Button onClick={() => router.push("/sign-in")}>Sign-in</Button>
