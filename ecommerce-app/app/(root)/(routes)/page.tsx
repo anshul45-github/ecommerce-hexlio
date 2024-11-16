@@ -3,7 +3,7 @@ import { Modal } from "@/components/modal";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { log } from "console";
 import { User } from "lucide-react";
@@ -40,12 +40,13 @@ export default function Home() {
       if (!response.ok) {
         const errorMessage = await response.text();
         throw new Error(`Network response was not ok: ${errorMessage}`);
-      }
+      }      
 
       toast.success("Store created successfully");
 
       const data = await response.json();
       console.log(data);
+      window.location.assign(`/${data.id}`);
     } catch (error) {
       console.error(error);
       toast.error("Error creating store");
@@ -81,7 +82,11 @@ export default function Home() {
         </Modal>
       </SignedIn>
       <SignedOut>
-        <Button onClick={() => router.push("/sign-in")}>Sign-in</Button>
+        <div className="flex flex-row-reverse">
+          <Button>
+            <SignInButton />
+          </Button>
+        </div>
       </SignedOut>
     </div>
   );
