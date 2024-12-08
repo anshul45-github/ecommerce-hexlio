@@ -7,7 +7,8 @@ interface DashboardLayoutProps {
 
 const DashboardLayout: React.FC<DashboardLayoutProps> = async ({ children, params }) => {
     const { userId } = await auth();
-    const Store = await store.findOne({ id: params.storeId, userId });
+    const { storeId } = await params;
+    const Store = await store.findOne({ id: storeId, userId });
     return (
         <div>
             Active store: {Store && Store.name}
