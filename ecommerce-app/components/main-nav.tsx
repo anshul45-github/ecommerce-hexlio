@@ -9,6 +9,11 @@ export function MainNav( { className, ...props } ) {
     const params = useParams();
     const routes = [
         {
+            href: `/${params.storeId}`,
+            name: "Dashboard",
+            isActive: pathName === `/${params.storeId}`
+        },
+        {
             href: `/${params.storeId}/settings`,
             name: "Settings",
             isActive: pathName.includes("settings")

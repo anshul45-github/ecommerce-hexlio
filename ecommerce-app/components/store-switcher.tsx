@@ -25,8 +25,6 @@ export default function storeSwitcher( { className, items=[] }: StoreSwitcherPro
   // Store switcher hook
   const [open, setOpen] = useState(false);
 
-  console.log(items);
-
   const frameworks = items.map((item) => ({
       label: item.name,
       value: item.id
@@ -40,6 +38,7 @@ export default function storeSwitcher( { className, items=[] }: StoreSwitcherPro
   
   const onStoreSelect = (store: {value: string, label: string}) => {
       setOpen(false);
+      console.log(router.pathname)
       router.push(`/${store.value}`);
   }
     
@@ -48,7 +47,7 @@ export default function storeSwitcher( { className, items=[] }: StoreSwitcherPro
       {/* This will be a store switcher. */}
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild className={className}>
-              <Button>
+              <Button variant={"default"}>
                   <StoreIcon className="h-6 w-6" />
                     {currentStore ? currentStore.label : "Select store"}
                   <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />

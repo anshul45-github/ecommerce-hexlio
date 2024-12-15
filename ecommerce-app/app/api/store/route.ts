@@ -33,7 +33,7 @@ export async function POST(request: Request) {
   
       return NextResponse.json(newStore);
     } catch (error) {
-      console.log("Error processing request:", error);
+      console.log("STORE_POST :", error);
       return new NextResponse("Internal Server Error", { status: 500 });
     }
   }
