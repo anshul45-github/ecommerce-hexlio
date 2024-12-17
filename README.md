@@ -8,6 +8,8 @@ Hexlio is a cutting-edge e-ommerce app in building to provide a seamless and int
 <li><b>Efficient State Management : </b> Leveraging React Hook Toast for smooth state handling and notifications.</li>
 <li><b>Robust Backend : </b> MongoDB for scalable and efficient data management.</li>
 <li><b>TypeScript Integration : </b> Ensuring robust and error-free codebase.</li>
+<li><b>Form Validation with Zod : </b> Implemented form resolver using Zod for schema-based form validation, ensuring accurate data handling.</li>
+<li><b>Image Upload Functionality : </b> Seamlessly integrated Cloudinary to handle image uploads, providing a reliable and optimized solution for media management.</li>
 </ul>
 
 ## Contributing

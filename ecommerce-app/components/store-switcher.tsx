@@ -2,20 +2,19 @@
 
 import { PopoverArrow, PopoverTriggerProps } from "@radix-ui/react-popover";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-import Store from "@/models/model";
 import { Button } from "./ui/button";
 import { use, useState } from "react";
 import { Check, ChevronsUpDown, PlusCircle, Router, StoreIcon } from "lucide-react";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "./ui/command";
 import { cn } from "@/lib/utils";
-import store from "@/models/model";
+import { store } from "@/models/model";
 import { redirect, useParams, useRouter } from "next/navigation";
 import { useStoreModal } from "@/hooks/use-store-modal";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>;
 
 interface StoreSwitcherProps extends PopoverTriggerProps {
-    items: Store[];
+    items: store[];
 }
 
 export default function storeSwitcher( { className, items=[] }: StoreSwitcherProps ) {

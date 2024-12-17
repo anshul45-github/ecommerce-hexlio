@@ -1,4 +1,4 @@
-import store from '@/models/model';
+import { store } from '@/models/model';
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import toast from 'react-hot-toast';

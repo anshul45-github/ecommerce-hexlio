@@ -1,5 +1,5 @@
 import Navbar from "@/components/navbar";
-import store from "@/models/model";
+import { store } from "@/models/model";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 

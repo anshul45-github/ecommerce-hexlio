@@ -14,6 +14,11 @@ export function MainNav( { className, ...props } ) {
             isActive: pathName === `/${params.storeId}`
         },
         {
+            href: `/${params.storeId}/billboards`,
+            name: "Billboards",
+            isActive: pathName.includes("billboards")
+        },
+        {
             href: `/${params.storeId}/settings`,
             name: "Settings",
             isActive: pathName.includes("settings")

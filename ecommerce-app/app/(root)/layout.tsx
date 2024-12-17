@@ -1,5 +1,5 @@
 import { connectToDB } from "@/lib/mongoose";
-import store from "@/models/model";
+import { store } from "@/models/model";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { useRouter } from 'next/router';

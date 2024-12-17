@@ -1,4 +1,4 @@
-import store from "@/models/model";
+import { store } from "@/models/model";
 import { auth } from "@clerk/nextjs/server";
 
 interface DashboardLayoutProps {
