@@ -82,7 +82,7 @@ const BillboardsForm: React.FC<billboardsFormProps> = ({ initialData }) => {
                 method: "DELETE",
             });
             router.refresh();
-            router.push("/");
+            router.push(`/${params.storeId}/billboards`);
             if(!response.ok) {
                 toast.error("Failed to delete billboard");
                 throw new Error("Failed to delete billboard");
